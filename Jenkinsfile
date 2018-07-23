@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'mvn -B -DskipTests clean package'
+                sh '/usr/local/apache-maven/apache-maven-3.5.4/bin/mvn -B -DskipTests clean package'
             }
         }
         stage('Test') {
             steps {
-                sh 'mvn test'
+                sh '/usr/local/apache-maven/apache-maven-3.5.4/bin/mvn test'
             }
             post {
                 always {

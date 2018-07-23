@@ -3,10 +3,8 @@ pipeline {
     stages {
         stage('Maven Test') {
             steps {
-                sh 'echo $PATH'                
-            }
-            steps {
-                sh 'whoami'
+                sh 'echo $PATH'
+                sh 'whoami'               
             }
         }
         stage('Build') {

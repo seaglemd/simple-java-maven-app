@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Maven Test') {
             steps {
-                sh 'which mvn'
+                sh 'echo $PATH'                
+            }
+            steps {
+                sh 'whoami'
             }
         }
         stage('Build') {

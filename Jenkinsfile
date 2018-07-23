@@ -1,6 +1,11 @@
 pipeline {
     agent any
     stages {
+        stage('Maven Test') {
+            steps {
+                sh 'which mvn'
+            }
+        }
         stage('Build') {
             steps {
                 sh '/usr/local/apache-maven/apache-maven-3.5.4/bin/mvn -B -DskipTests clean package'

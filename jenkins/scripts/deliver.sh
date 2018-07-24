@@ -5,4 +5,4 @@ NAME=$(mvn help:evaluate -Dexpression=project.name | grep -o "my-app")
 set -x
 name=$NAME | grep -o "my-app$"
 echo $name
-java -jar target/$NAME-$VERSION.jar
+java -jar target/$name-$VERSION.jar

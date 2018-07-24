@@ -6,5 +6,5 @@ echo $VERSION
 echo "NEXT VERSION -----------------------"
 echo ${VERSION}
 NAME=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.name}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec)
-java -jar target/${NAME}-${VERSION}.jar
+java -jar target/my-app-1.0-SNAPSHOT.jar
 

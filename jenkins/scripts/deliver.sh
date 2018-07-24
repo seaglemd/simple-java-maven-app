@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
-set -x
-NAME=`mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"`
+mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 echo '${NAME}:'
 echo ${NAME}

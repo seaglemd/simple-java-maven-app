@@ -8,5 +8,5 @@ VERSION=$VERSION | grep -o "[0-9].[0-9]-SNAPSHOT$"
 echo $VERSION
 echo $NAME
 echo "AFTER THE ECHO ----------------"
-NAME=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.name}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec)
+set +x
 java -jar target/$NAME-$VERSION.jar

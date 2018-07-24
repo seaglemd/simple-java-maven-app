@@ -1,28 +1,16 @@
 pipeline {
     agent any
     stages {
-        stage('Maven Test') {
-            steps {
-                withMaven(
-                    // Maven installation declared in the Jenkins "Global Tool Configuration"
-                    maven: 'Maven'
-                    // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
-                    // Maven settings and global settings can also be defined in Jenkins Global Tools Configuration
-                    //mavenSettingsConfig: 'my-maven-settings',
-                    //mavenLocalRepo: '.repository'
-                    ) {
-                        // Run the maven build
-                        sh 'echo $PATH'
-                        sh 'whoami' 
-                        sh 'mvn -v'     
-                    } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs reports...                         
-            }
-        }
         stage('Build') {
             steps {
                 withMaven(maven: 'Maven') {
                         sh 'mvn -B -DskipTests clean package'
                     }
+            }
+            post {
+                always {
+                    archiveArtifacts artifacts: 'build/libs/**/*.jar', fingerprint: true
+                }
             }
         }
         stage('Test') {

@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
-mvn help:evaluate -Dexpression=project.name | grep "^[^\[]"
-VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
-echo '${NAME}:'
-echo ${NAME}
-#java -jar target/${NAME}-${VERSION}.jar
+
+VERSION=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.version}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec)
+NAME=$(mvn -q -Dexec.executable="echo" -Dexec.args='${project.name}' --non-recursive org.codehaus.mojo:exec-maven-plugin:1.3.1:exec)
+java -jar target/${NAME}-${VERSION}.jar
 

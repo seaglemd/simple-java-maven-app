@@ -20,6 +20,7 @@ set -x
 VERSION=`mvn help:evaluate -Dexpression=project.version | grep "^[^\[]"`
 set +x
 
+echo 'NAMES OF THINGS WILL BE UNDER THIS BLAH BLAH BLAH BLAH BLAH BLAH'
 echo ${VERSION}
 echo ${NAME}
 echo 'The following command runs and outputs the execution of your Java'

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 mvn jar:jar install:install help:evaluate -Dexpression=project.name
 VERSION=$(mvn help:evaluate -Dexpression=project.version | grep "[0-9].[0-9]-SNAPSHOT$")
+$(mvn help:evaluate -Dexpression=project.version | grep "[0-9].[0-9]-SNAPSHOT$" | grep "[0-9].[0-9]-SNAPSHOT$")
 echo "BEFORE THE ECHO ---------------"
 echo $VERSION
 echo "AFTER THE ECHO ----------------"
